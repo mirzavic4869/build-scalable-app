@@ -9,6 +9,6 @@ export default function Edit() {
   );
 }
 
-Edit.getLayout = function getLayout({ page }) {
+Edit.getLayout = function getLayout(page) {
   return <Layout>{page}</Layout>;
 };

@@ -1,28 +1,10 @@
-import React from 'react';
+import { AddNoteForm } from '../form';
 
-export default function AddPage() {
+export default function EditPage() {
   return (
-    <>
-      <p className="text-3xl font-semibold">Add New Note</p>
+    <div className="p-8">
+      <p className="my-6 text-2xl font-bold text-center">Add New Note</p>
       <AddNoteForm />
-    </>
+    </div>
   );
 }
-
-const AddNoteForm = () => {
-  return (
-    <>
-      <form>
-        <label>
-          Title:
-          <input type="text" name="title" />
-        </label>
-        <label>
-          Note:
-          <textarea name="note" />
-        </label>
-        <button type="submit">Add</button>
-      </form>
-    </>
-  );
-};

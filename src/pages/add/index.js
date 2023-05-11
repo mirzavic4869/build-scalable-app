@@ -9,6 +9,6 @@ export default function Add() {
   );
 }
 
-Add.getLayout = function getLayout({ page }) {
+Add.getLayout = function getLayout(page) {
   return <Layout>{page}</Layout>;
 };

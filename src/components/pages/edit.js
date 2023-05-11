@@ -1,29 +1,10 @@
-import React from 'react';
+import { EditNoteForm } from '../form';
 
 export default function EditPage() {
   return (
-    <>
-      <p className="text-3xl font-semibold">Edit Note</p>
+    <div className="p-8">
+      <p className="my-6 text-2xl font-bold text-center">Edit Note</p>
       <EditNoteForm />
-    </>
+    </div>
   );
 }
-
-const EditNoteForm = () => {
-  return (
-    <>
-      <form>
-        <label>
-          Title:
-          <input type="text" name="title" />
-        </label>
-        <label>
-          Note:
-          <textarea name="note" />
-        </label>
-        <button type="submit">Save</button>
-        <button>Delete</button>
-      </form>
-    </>
-  );
-};
