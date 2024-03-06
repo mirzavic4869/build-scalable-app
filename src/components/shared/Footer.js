@@ -1,10 +1,19 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  margin: 1rem;
+  padding: 0.5rem;
+  min-height: 10vh;
+`;
 
 const Footer = () => {
   return (
-    <>
-      <h1>Footer</h1>
-    </>
+    <Container>
+      <p>
+        by <a href="https://devsaurus.com">devsaurus</a> &copy;{new Date().getFullYear()}
+      </p>
+    </Container>
   );
 };
 
