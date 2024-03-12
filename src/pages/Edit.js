@@ -1,33 +1,16 @@
 import React from 'react';
-import Footer from '../components/shared/Footer';
-import Header from '../components/shared/Header';
 import PageLayout from '../layouts/PageLayout';
-
-const EditNoteForm = () => {
-  return (
-    <>
-      <form>
-        <label>
-          Title:
-          <input type="text" name="title" />
-        </label>
-        <label>
-          Note:
-          <textarea name="note" />
-        </label>
-        <button type="submit">Save</button>
-        <button>Delete</button>
-      </form>
-    </>
-  );
-};
+import Container from '../components/ui/Container';
+import EditNoteForm from '../components/EditNoteForm';
 
 const EditPage = () => {
   return (
     <>
       <PageLayout>
-        <h1>Edit Note</h1>
-        <EditNoteForm />
+        <Container>
+          <h2>Edit Note</h2>
+          <EditNoteForm />
+        </Container>
       </PageLayout>
     </>
   );
