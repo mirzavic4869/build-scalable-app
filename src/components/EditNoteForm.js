@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Form, FormGroup, Label, Input, TextArea } from './ui/Forms';
 import Button from './ui/Button';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const EditNoteForm = () => {
   const location = useLocation();
+  const history = useNavigate();
   const [allNotes, setAllNotes] = useState(null);
   const [currentNote, setCurrentNote] = useState({ title: '', note: '' });
 
@@ -30,7 +31,7 @@ const EditNoteForm = () => {
     setCurrentNote({ ...currentNote, note: e.target.value });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
     const newNotes = allNotes.map((note) => {
       if (note.id === currentNote.id) {
         return { ...note, title: currentNote.title, note: currentNote.note };
@@ -42,6 +43,18 @@ const EditNoteForm = () => {
     localStorage.setItem('notes', JSON.stringify(newNotes));
 
     e.preventDefault();
+  };
+
+  const handleDeleteNote = (e) => {
+    const newNotes = allNotes.filter((note) => note.id !== currentNote.id);
+
+    setCurrentNote(null);
+
+    setAllNotes(newNotes);
+
+    localStorage.setItem('notes', JSON.stringify(newNotes));
+
+    history('/');
   };
 
   const { title, note } = currentNote;
@@ -58,7 +71,7 @@ const EditNoteForm = () => {
         </FormGroup>
         <FormGroup>
           <Button type="submit">Save</Button>
-          <Button>Delete</Button>
+          <Button onClick={handleDeleteNote}>Delete</Button>
         </FormGroup>
       </Form>
     </>
