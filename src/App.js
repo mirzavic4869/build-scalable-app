@@ -13,7 +13,7 @@ function App() {
     <Container>
       <Routes>
         <Route path="/add" element={<AddPage />} />
-        <Route path="/edit" element={<EditPage />} />
+        <Route path="/edit/:id" element={<EditPage />} />
         <Route path="/" element={<HomePage />} />
       </Routes>
     </Container>
