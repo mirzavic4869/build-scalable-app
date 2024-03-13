@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import { Form, FormGroup, Label, Input, TextArea } from '../components/ui/Forms';
 import Button from './ui/Button';
 import { v4 as uuidv4 } from 'uuid';
+import getLocalStorageData from '../utils/getLocalStorageData';
+import Message from './ui/Message';
 
 const AddNoteForm = () => {
   const [state, setState] = useState({ title: '', note: '' });
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const handleTitleChange = (e) => {
     setState({ ...state, title: e.target.value });
@@ -15,15 +18,15 @@ const AddNoteForm = () => {
   };
 
   const handleSubmit = (e) => {
-    let existing = localStorage.getItem('notes');
-
-    existing = existing ? JSON.parse(existing) : [];
+    const notes = getLocalStorageData('notes');
 
     const noteId = uuidv4();
 
-    existing.push({ ...state, id: noteId });
+    notes.push({ ...state, id: noteId });
 
-    localStorage.setItem('notes', JSON.stringify(existing));
+    localStorage.setItem('notes', JSON.stringify(notes));
+
+    setIsSuccess(true);
 
     e.preventDefault();
   };
@@ -31,6 +34,7 @@ const AddNoteForm = () => {
   const { title, note } = state;
   return (
     <>
+      {isSuccess && <Message text="Data berhasil disimpan" />}
       <Form onSubmit={handleSubmit}>
         <FormGroup>
           <Label>Title:</Label>
